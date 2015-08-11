@@ -1,6 +1,6 @@
 <%= "Hello #{@customer.name}"%>
-<%= link_to 'add pet', new_pet_path %>
-<%= link_to 'Take Appointment', new_appointment_path %>
+<%= link_to 'Add pet' ,:controller => 'pets', :action => 'new', :customer_id => @customer.id %>
+<%= link_to 'Make an Appointment' ,:controller => 'appointments', :action => 'new', :customer_id => @customer.id %>
 <div id="board">   
    <%= content_tag :div do %>
 	<div class="header">

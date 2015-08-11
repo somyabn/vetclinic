@@ -1,11 +1,18 @@
-<%= form_for @customer do |f| %>
+<%= form_for @pet , do |f| %>
  <%= f.label :name %>
  <%= f.text_field :name %>
- <%= f.label :email%>
- <%= f.email_field :email %>
- <%= f.label :password %>
- <%= f.password_field :password %>
- <%=f.submit :Register %>
+ <%= f.label :type%>
+ <%= f.text_field :type %>
+ <%= f.label :breed%>
+ <%= f.text_field :breed %>
+ <%= f.label :age %>
+ <%= f.number_field :age %>
+ <%= f.label :weight %>
+ <%= f.number_field :weight %>
+ <%= f.label :dateOfLastVisit%>
+ <%= f.datetime_field :dateOfLastVisit %>
+ <%= f.hidden_field :customer_id %>
+ <%=f.submit :Add %>
   <% end %>
 
   

@@ -1,0 +1,7 @@
+<%= form_for @appointment do |f| %>
+ <%= f.label :reasonForVisit %>
+ <%= f.text_field :reasonForVisit %>
+ <%= f.label :DateOfVisit%>
+ <%= f.datetime_field :DateOfVisit %>
+ <%=f.submit :Register %>
+  <% end %>

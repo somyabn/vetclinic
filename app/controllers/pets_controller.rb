@@ -1,17 +1,39 @@
 class PetsController < ApplicationController
-  def create
-  	Pet.create(title: "???", body: "something briliant here...")
-  	respond_to do |format|
-    format.html {redirect_to root_path, notice: "New petcreated."}
-    format.js
-   end
-   def destroy
-   	@pet=Pet.find(params[:id])
-   	@pet.destroy
-   	respond_to do |format|
-    format.html {redirect_to root_path, notice: "pet destroyed."}
-    format.js {head :no_content }
+  def index
+    
+  end
+  def new
+    @pet = Pet.new
+  end
 
-   end
+  def create
+    @pet = Pet.new(pets_params)
+     if @pet.save
+       flash[:notice] = "You have created a new pet successfully."
+       redirect_to pet_path @pet
+     else
+       flash[:alert] = "There was a problem saving your
+       pet."
+       redirect_to new_pet_path
+     end
+  end
+
+  def show
+    @pet = Pet.find(params[:id])
+    
+  end
+
+  def delete
+    @pet = Pet.find(params[:id])
+    @pet.delete
+  end
+
+
+  private
+  def pets_params
+    params.require(:pet).permit(:name, :owner ,:breed, :age , :weight , 
+      :dateOfLastVisit)
   end
 end
+
+

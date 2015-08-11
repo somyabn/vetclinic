@@ -1,11 +1,12 @@
 <h1>Welcome to Vet Clinic...</h1>
 <%= link_to "New Patient? Signup", new_customer_path %>
-<%= form_for Customer.new do |f| %>
- <%= f.label :name %>
- <%= f.text_field :name %>
- <%= f.label :email%>
- <%= f.email_field :email %>
- <%= f.label :password %>
- <%= f.password_field :password %>
- <%=f.submit :Login %>
-  <% end %>
+<div class="form_class"><%= form_tag(signin_path, method: :post) do %>
+        <%= label_tag :name %>
+	    <%= text_field_tag :name %>
+	    <%= label_tag :email %>
+	    <%= email_field_tag :email %>
+	    <%= label_tag :password %>
+        <%= password_field_tag :password %>
+	    <%= submit_tag "login" %>
+	  <%end%>
+</div>

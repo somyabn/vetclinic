@@ -7,7 +7,7 @@ class CustomersController < ApplicationController
   end
 
   def create
-  	@customer = Customer.new(params[:user])
+  	@customer = Customer.new(customer_params)
      if @customer.save
        flash[:notice] = "You have registered successfully."
        redirect_to customer_path @customer
@@ -20,8 +20,14 @@ class CustomersController < ApplicationController
 
   def show
   	@customer = Customer.find(params[:id])
-  	@pet = @customer
+  	@pets = @customer.pets
   end
+
+  def delete
+    @customer = Customer.find(params[:id])
+    @customer.delete
+  end
+
 
   private
   def customer_params
